@@ -28,8 +28,8 @@ A simple, interactive web-based music player that allows users to browse, search
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/music_playerapp-final.git
-   cd music_playerapp-final
+   git clone https://github.com/AmithMJambagi/Music-player.git
+   cd Music-player
    ```
 2. **Add your audio and image files:**
    - Place your `.mp3` files in the `audios/` folder.
@@ -46,9 +46,7 @@ A simple, interactive web-based music player that allows users to browse, search
 - To add more songs, edit the `songObj` array in `app.js`.
 - To add more genres, update the `genres` array in `app.js`.
 
-## Screenshots
 
-Music-player/screenshot.png
 
 
 ## License
