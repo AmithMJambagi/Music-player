@@ -1,0 +1,943 @@
+/* this is the light theme*/
+:root {
+  /* Background + text */
+  --bg-color: #eaf2ff;                 /* soft very-light blue */
+  --text-color: #1a1d21;               /* deep gray (not pure black) */
+
+  /* Panels */
+  --panel-bg: #f7faff;                 /* bluish-white panel background */
+  --panel-border: rgba(30, 64, 175, 0.10);   /* faint blue border */
+  --panel-shadow:
+      0 6px 18px rgba(30, 64, 175, 0.15),
+      0 2px 6px rgba(30, 64, 175, 0.12);     /* soft blue-tinted shadow */
+
+  /* Cards (songsDisplay + newPlaylist) */
+  --card-bg: #ffffff;                  /* clean white */
+  --card-border: rgba(59, 130, 246, 0.25);   /* light sky-blue border */
+  --card-text: #1f2937;
+
+  --card-shadow:
+      0 8px 20px rgba(59, 130, 246, 0.15),
+      0 3px 8px rgba(59, 130, 246, 0.12);     /* bluish clean shadow */
+
+  /* Buttons */
+  --button-bg: #3b82f6;                /* soft blue button */
+  --button-text: #ffffff;
+
+  /* Select / dropdowns */
+  --select-bg: #60a5fa;                /* light blue select */
+
+  /* Scrollbars */
+  --scroll-thumb: linear-gradient(
+      180deg,
+      rgba(59,130,246,0.45),
+      rgba(59,130,246,0.30)
+  );
+
+  --scroll-thumb-hover: linear-gradient(
+      180deg,
+      rgba(29,78,216,0.55),
+      rgba(29,78,216,0.40)
+  );
+
+  /* Top gradient */
+  --top-image-gradient: linear-gradient(
+    to bottom,
+    #f0f6ff 0%,
+    #d7e9ff 40%,
+    #bcd9ff 100%
+  );
+  --delete-color: #ef4444;   /* red-500 */
+--delete-bg: #fee2e2;      /* light red background */
+
+}
+
+
+
+/* DARK THEME OVERRIDES */
+.dark-mode {
+  --delete-color: #fca5a5;   /* soft red */
+--delete-bg: rgba(239,68,68,0.15);   /* dark red tint */
+
+  --bg-color: #24354d;            /* soft dark navy */
+  --text-color: #e2e8f0;          /* soft gray-white */
+
+  --panel-bg: #2c384e;            /* soft gray-blue panels */
+
+  --card-bg: #1e232c;             /* darker but smooth */
+  --card-border: #2b313b;         /* subtle borders */
+  --card-text: #e2e8f0;
+
+  --button-bg: #8b5cf6;           /* soft purple */
+  --button-text: #ffffff;
+
+  --select-bg: #3b82f6;           /* soft blue */
+
+  --scroll-thumb: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.12)
+  );
+
+  --scroll-thumb-hover: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.20)
+  );
+
+  --top-image-gradient: linear-gradient(
+    to bottom,
+    #2a3036 0%,
+    #242a31 50%,
+    #1b1f25 100%
+  );
+
+  /* softer floating effect in dark mode */
+  --panel-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  --card-shadow: 0 8px 20px rgba(0,0,0,0.45);
+}
+
+
+
+body{
+     background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 0%;
+    margin: 0%;
+    border: none;
+}
+#heading{
+    text-align: center;
+   color: var(--text-color);
+
+    /* text-align: center; */
+    font-size: 35px;
+    
+}
+/* The switch container */
+.toggle-switch {
+ position:relative;
+ vertical-align: center;
+ border-top: none;
+ margin-top: 0vw;
+
+
+ margin-left: 90vw;
+ display: inline-block;
+  width: 90px;
+  height: 30px;
+  padding-top: 0%;
+}
+.slider{
+    color: white;
+    font-weight: bold;
+}
+.toggle-switch .slider{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 5px;
+    padding-right: 3px;
+}
+
+/* Hide default HTML checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bebebe;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px; /* For a rounded slider */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%; /* For a rounded handle */
+}
+
+/* When checked, change background color and move slider */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-content: center;
+   
+}
+    
+.left, .center, .right{
+    border:1px solid black;
+   background-color: var(--panel-bg);
+  color: var(--text-color);
+
+    height: 100vh;
+    width: auto;
+    margin:2%;
+    border-radius: 5%;
+    box-shadow: #ccc;
+    overflow: auto;
+    
+}
+
+.left{
+  padding-left:1rem; 
+}
+
+/* custom curved & blended scrollbar */
+.left {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.22) transparent;
+  
+}
+
+
+/* WebKit browsers (Chrome, Edge, Safari) */
+.left::-webkit-scrollbar {
+  width: 12px;                     /* visible width */
+}
+
+.left::-webkit-scrollbar-track {
+  background: transparent;         /* blend with container */
+  border-radius: 12px;             /* curved track */
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.06);
+}
+
+.left::-webkit-scrollbar-thumb {
+background: var(--scroll-thumb);
+  border-radius: 10px;             /* rounded thumb */
+  border: 3px solid rgba(255,255,255,0.6); /* creates soft inset edge to blend */
+  transition: opacity 0.2s ease, background 0.2s ease;
+  opacity: 0;                      /* hidden until hover */
+}
+
+/* show when hovering the container or the thumb itself */
+.left:hover::-webkit-scrollbar-thumb,
+.left::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+}
+
+/* optional darker hover state */
+.left:hover::-webkit-scrollbar-thumb {
+background: var(--scroll-thumb-hover);
+
+}
+/* ...existing code... */
+.center{
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+   justify-items: center;
+    display: block;
+}
+
+.genreDiv{
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 15%;
+    margin-top: 10px;
+    display: inline-block;
+    width: 80%;
+}
+
+.genreOptions, .selectOptions{
+  font-size: 0.8em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ background-color: var(--select-bg);
+
+  border-radius: 1em;
+  width: 30%;
+  height: 2em;
+  margin-left: 0.2em;
+  text-align: center;
+}
+
+.songsDiv{
+  margin-top : 5vh;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 0;
+
+
+}
+
+.songsDisplay {
+    /* --- Card Container Styles --- */
+    background-color: var(--card-bg);
+border: 1px solid var(--card-border);
+color: var(--card-text);
+
+    border-radius: 12px; /* Highly rounded corners */
+    
+    width: 75%;
+   margin: 1em auto;
+   padding: 1em;
+    
+    max-width: 500px; /* Limits width for readability */
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.15); /* Soft, subtle blue shadow */
+   font-size: 0.5em;
+    /* --- Text & Layout --- */
+    font-family: 'Inter', sans-serif;
+    
+     /* Space between song items */
+     height: 1.5em;
+ display: flex;
+ justify-content: center;
+ align-content: center;
+  
+}
+.songsDisplay:hover {
+    background-color: var(--card-border);
+
+      cursor: pointer; /* Pointer cursor on hover */
+     
+      justify-content: center;
+    transition: all 0.5s ease-in-out allow-discrete;
+    width: 83%;
+  height: 2.3em;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-content: center;
+} 
+
+.topImageContainer{
+  width: 90%;
+  display: flex;
+  height: 66%;
+  margin-left: 2%;
+  justify-items: center;
+  align-items: center;
+  background: var(--top-image-gradient);
+ /* Light Blue-Cyan */
+  box-shadow: 
+    0 4px 8px rgba(0, 188, 212, 0.2), /* Subtle shadow */
+    0 0 10px rgba(0, 188, 212, 0.1); /* Gentle blue light effect */
+  border-radius: 8px;
+  margin-top: 2%;  
+border-radius: 20%;
+
+/* Requires content/background behind it to see the blur effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border: 1px solid rgba(173, 216, 230, 0.5); /* Light Steel Blue border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+
+  background-color: #00204a; /* Dark Blue Background */
+  border: 1px solid #4dffff; /* Neon cyan border */
+  box-shadow:
+    /* Inner Glow (Lighter/Sharper) */
+    inset 0 0 15px #4dffff, 
+    /* Outer Aura (Wider/Softer) */
+    0 0 20px #4dffff, 
+    /* Deeper, wider shadow */
+    0 0 40px rgba(0, 191, 255, 0.6); 
+  
+
+
+  background: linear-gradient(
+    to bottom,
+    #e8ffff 0%, /* Very Light Cyan/Ice Blue at the top */
+    #bfe8ff 50%, /* Pale Sky Blue in the middle */
+    #87cefa 100% /* Light Sky Blue at the bottom */
+  );
+  box-shadow: 
+    0 8px 15px rgba(0, 0, 0, 0.1), /* Standard lift shadow */
+    inset 0 -10px 15px rgba(0, 123, 255, 0.3); /* Bottom depth shadow */
+ 
+}
+
+.newImageDiv{
+  width:100%;
+  height: auto;
+  aspect-ratio: 16 / 9; 
+
+  
+}
+.imageElement{
+  width : 80%;
+  border-radius: 12%;
+  margin-top: 5%;
+ margin-left: 10%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  height: 45vh;
+}
+
+.songName{
+display: block;
+font-size: 2.5em;
+margin-left: 0;
+text-align: center;
+margin-top: 2%;
+margin-bottom: 1%;
+color: rgb(14, 13, 13);
+}
+
+.artistName{
+
+display: block;
+font-size: 1.2em;
+text-align: center;
+margin-top: 0;
+padding-top: 0;
+color: rgb(14, 13, 13);
+}
+.audioElement{
+  width: 60%;
+  margin-left: 6%;
+  margin-top: 3%;
+  display: block;
+}
+
+
+
+
+
+.forward{
+  margin-top: 2%;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: bolder;
+  background-color: var(--button-bg);
+color: var(--button-text);
+
+  margin-left: 13%;
+  border-radius: 50%;
+
+}
+.forward:hover, .backward:hover{
+  cursor:pointer;
+  background-color: blue;
+}
+.backward{
+  margin-top: 2%;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: bolder;
+background-color: var(--button-bg);
+color: var(--button-text);
+
+  margin-left: 30%;
+  border-radius: 50%;
+}
+
+.button-container{
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+
+}
+
+.addtoPlayList{
+  display: block;
+  margin-top: 2%;
+  height: 2.75em;
+  margin-left: 5%;
+  width: 22%;
+  font-weight: bolder;
+  background-color: var(--button-bg);
+color: var(--button-text);
+border-radius: 15px;
+
+}
+
+
+
+.playlistInput{
+  width: 50%;
+  height: 2rem;
+  background-color: rgb(143, 223, 238);
+  /* align-self: center; */
+  
+  color: #090909;
+  text-align: center;
+  font-weight: bolder;
+  border-radius: 5%;
+ 
+  display: inline-block;
+}
+
+.playlistInput::placeholder{
+ color: var(--text-color);
+  opacity: 0.8;
+font-size: 0.75rem;
+}
+
+.playlistInput:focus::placeholder{
+  color: transparent;
+  
+}
+
+/* PLAYLIST INPUT */
+.playlistInput {
+  width: 50%;
+  height: 2.6rem;                     /* SAME height as button */
+  padding: 0 1rem;
+
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-color);
+ opacity: 0.45;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+
+  display: inline-block;
+  vertical-align: middle;             /* ALIGN FIX */
+  margin: 5% 2%;                      /* REDUCED margin to align */
+
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+}
+
+
+/* ADD PLAY BUTTON */
+.addPlay {
+  width: 25%;
+  height: 2.6rem;                     /* MATCH height of input */
+  line-height: 2.6rem;                /* FIX TEXT CENTERING */
+
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+
+  display: inline-block;
+  vertical-align: middle;             /* ALIGN FIX */
+  margin: 5% 2%;                      /* MATCH input margin */
+
+  cursor: pointer;
+
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+}
+
+
+
+
+.playlistContainer{
+display: block;
+
+
+}
+.currentPlaylist ,.allPlaylist{
+  margin-top: 5%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+.allPlaylist{
+  margin-top: 10%;
+}
+
+
+.newPlaylist {
+  background-color: var(--card-bg);       /* was #EFF6FF */
+  border: 1px solid var(--card-border);   /* was #93C5FD */
+  border-radius: 12px;
+
+  width: 60%;
+  margin: 1em auto;
+  padding: 1em;
+  margin-top: 3%;
+  max-width: 500px;
+
+  box-shadow: var(--card-shadow);         /* same shadow system */
+
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--card-text);                /* was #1F2937 */
+  height: 1.5em;
+
+  display: flex;
+   justify-content: space-evenly;   /* pushes children apart */
+  align-items: center;  
+  /* justify-content: center;
+  align-content: center; */
+  font-weight: 700;
+}
+
+.newPlaylist:hover {
+  background-color: var(--card-border);   /* was #93C5FD */
+  cursor: pointer;
+  transition: all 0.5s ease-in-out allow-discrete;
+
+  width: 65%;
+  height: 2.3em;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-content: center;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18); /* stronger hover shadow */
+}
+.currentContainer{
+  display: block;
+}
+
+
+.right {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.22) transparent;
+  
+}
+
+
+/* WebKit browsers (Chrome, Edge, Safari) */
+.right::-webkit-scrollbar {
+  width: 12px;                     /* visible width */
+}
+
+.right::-webkit-scrollbar-track {
+  background: transparent;         /* blend with container */
+  border-radius: 12px;             /* curved track */
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.06);
+}
+
+.right::-webkit-scrollbar-thumb {
+ background: var(--scroll-thumb);
+
+  border-radius: 10px;             /* rounded thumb */
+  border: 3px solid rgba(255,255,255,0.6); /* creates soft inset edge to blend */
+  transition: opacity 0.2s ease, background 0.2s ease;
+  opacity: 0;                      /* hidden until hover */
+}
+
+/* show when hovering the container or the thumb itself */
+.right:hover::-webkit-scrollbar-thumb,
+.right::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+}
+
+/* optional darker hover state */
+.right:hover::-webkit-scrollbar-thumb {
+background: var(--scroll-thumb-hover);
+
+}
+
+/* .searchInput{
+  width: 70% ;
+  margin-top: 10%;
+  margin-left: 15%;
+  border-radius: 1%;
+  height: 5%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+.playlistSearch{
+  
+  display: block;
+  height: 2rem;        
+  padding: 0.5rem;      
+  box-sizing: border-box; 
+
+} */
+
+
+/*  SEARCH INPUT  */
+.searchInput {
+  width: 70%;
+  margin-top: 10%;
+  margin-left: 15%;
+  height: 2.8rem;
+
+  border-radius: 10px;
+  border: 1px solid var(--card-border);   /* auto light/dark */
+  background: var(--card-bg);             /* auto light/dark */
+  color: var(--text-color);
+
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+
+  box-shadow: var(--card-shadow);         /* auto light/dark */
+  transition: all 0.25s ease;
+}
+
+.searchInput::placeholder {
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--select-bg);         /* bluish theme color */
+  background: var(--panel-bg);
+
+  box-shadow:
+    0 0 0 4px rgba(59,130,246,0.25),       /* bluish glow */
+    var(--card-shadow);
+}
+
+/*  PLAYLIST SEARCH */
+.playlistSearch {
+  display: block;
+  width: 80%;
+  margin: 1rem auto;
+
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+
+  border-radius: 12px;
+  border: 1px solid var(--card-border);   /* auto light/dark */
+  background: var(--card-bg);             /* auto light/dark */
+  color: var(--text-color);
+
+  font-size: 1rem;
+  font-weight: 500;
+  box-sizing: border-box;
+
+  box-shadow: var(--card-shadow);         /* auto light/dark */
+  transition: all 0.25s ease;
+}
+
+.playlistSearch::placeholder {
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+.playlistSearch:focus {
+  outline: none;
+  border-color: var(--select-bg);
+  background: var(--panel-bg);
+
+  box-shadow:
+    0 0 0 4px rgba(59,130,246,0.25),
+    var(--card-shadow);
+}
+
+.hide{
+  display: none;
+}
+
+
+.deleteButton {
+  font-weight: 700;
+  color: var(--delete-color);
+  
+  width: 1.5rem;
+  height: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  border: 1px solid var(--delete-color);
+
+  background: var(--delete-bg);
+  cursor: pointer;
+
+  font-size: 1rem;
+  justify-self: flex-end;
+  box-shadow: var(--card-shadow);  /* auto theme shadow */
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+/* Hover effect */
+.deleteButton:hover {
+  background: var(--delete-color);
+  color: white;
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 15px rgba(239,68,68,0.35);
+}
+
+/* Click effect */
+.deleteButton:active {
+  transform: translateY(0);
+  box-shadow: var(--card-shadow);
+}
+.activePlaylist {
+  background-color: rgba(59,130,246,0.20);
+  border-color: var(--select-bg);
+  transform: scale(1.03);
+  transition: 0.25s ease;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  MOBILE VIEW  */
+@media (max-width: 600px) {
+
+  /* Stack columns vertically */
+  .container {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  /* Panels adjust height */
+  .left, .center, .right {
+    width: 90%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 12px;
+    padding-bottom: 2rem;
+  }
+
+  /* Top heading smaller */
+  #heading {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  /* Search input */
+  .searchInput {
+    width: 85%;
+    margin: 1rem auto;
+    height: 2.6rem;
+    font-size: 1rem;
+  }
+
+  /* Playlist input + button */
+  .playlistInput {
+    width: 60%;
+    height: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .addPlay {
+    width: 28%;
+    height: 2.5rem;
+    font-size: 0.9rem;
+    line-height: 2.5rem;
+  }
+
+  /* Songs and playlist cards */
+  .songsDisplay,
+  .newPlaylist {
+    width: 90% !important;
+    font-size: 0.8rem;
+    height: auto;
+    padding: 0.8rem;
+    display: flex;
+  }
+
+  .songsDisplay:hover,
+  .newPlaylist:hover {
+    width: 92% !important;
+    height: auto;
+  }
+
+  /* Image container */
+  .topImageContainer {
+    width: 95%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 14px;
+  }
+
+  .imageElement {
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  /* Delete button size */
+  .deleteButton {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Next/Previous buttons */
+  .forward, .backward {
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-left: 10%;
+  }
+
+  /* Audio player */
+  .audioElement {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
