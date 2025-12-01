@@ -48,7 +48,8 @@ A simple, interactive web-based music player that allows users to browse, search
 
 ## Screenshots
 
-screenshot.png
+Music-player/screenshot.png
+
 
 ## License
 
